@@ -7,7 +7,7 @@ const {
   checkUsernameFree,
   checkUsernameExists,
 } = require("../middleware/auth-middleware");
-const tokenBuilder = require("./token-builder");
+const tokenBuilder = require("../auth/token-builder");
 
 router.get("/", async (req, res) => {
   res.json(await getAllUsers());
@@ -26,12 +26,18 @@ router.post("/register", checkUsernameFree, async (req, res, next) => {
 });
 
 // the above registers a new account, with the user providing a username and password
-// middleware checks to make sure the suername is unique and the password is hashed before it is saved
+// middleware checks to make sure the username is unique and the password is hashed before it is saved
 // if registration is successful, the response will contain an id, username, and password
 // if username or password are missing, registration will fail, informing the user to provide them
 // if the username is already in use, the user will be informed of this and asked to try again
 
 router.post("/login", checkUsernameExists, (req, res, next) => {
+  // console.log(req.body.password, req.users.password);
+  // console.log(req.users.password, req.body.password, "passwords");
+  // console.log(
+  //   bcrypt.compareSync(req.body.password, req.users.password),
+  //   "I am here"
+  // );
   if (bcrypt.compareSync(req.body.password, req.users.password)) {
     const token = tokenBuilder(req.users);
     res.status(200).json({
