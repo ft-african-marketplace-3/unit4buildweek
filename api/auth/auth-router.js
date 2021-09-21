@@ -50,3 +50,5 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
 // if this is done successfully, the response will have a message ("welcome, {whoever}" and token
 // if the login or password are missing, the response will fail and inform the user to provide a username and password
 // if the username does not exist in the db, or if the password is wrong, the request will fail and the body will say 'invalid credentials'
+
+module.exports = router;
