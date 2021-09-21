@@ -21,8 +21,10 @@ const users = [
   },
 ];
 
-exports.users = users;
+// exports.users = users;
 
 exports.seed = function (knex) {
-  return knex("users").insert(users);
+  return knex("users").then(function () {
+    return knex("users").insert(users);
+  });
 };
