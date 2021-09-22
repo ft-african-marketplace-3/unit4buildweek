@@ -25,6 +25,7 @@ exports.up = async (knex) => {
         .inTable("owners");
       items.integer("location").notNullable().unsigned();
       items.string("name").notNullable();
+      items.string("item_type").notNullable();
       items.string("description");
       items.integer("price").notNullable().unsigned();
     });
