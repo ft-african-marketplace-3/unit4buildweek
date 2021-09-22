@@ -4,6 +4,10 @@ function getAllUsers() {
   return db("users");
 }
 
+function getAllItems() {
+  return db("items");
+}
+
 function findBy(filter) {
   console.log(filter, "in findby");
   return db("users").where(filter);
@@ -25,9 +29,22 @@ async function insertUser(user) {
   return newUserObject; // { user_id: 7, username: 'foo', password: 'xxxxxxx' }
 }
 
+async function insertItem(item) {
+  const [newItemObject] = await db("items").insert(item, [
+    "item_id",
+    "owner_id",
+    "name",
+    "description",
+    "price",
+  ]);
+  return newItemObject;
+}
+
 module.exports = {
   getAllUsers,
   insertUser,
   findById,
   findBy,
+  getAllItems,
+  insertItem,
 };

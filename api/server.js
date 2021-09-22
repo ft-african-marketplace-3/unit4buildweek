@@ -12,7 +12,7 @@ server.use(helmet());
 server.use(cors());
 
 server.use("/api/users", usersRouter);
-server.use("/api/auth", restrict, authRouter);
+server.use("/api/auth", authRouter);
 
 // server.get('/api/users', async (req, res) => {
 //   res.json(await getAllUsers())

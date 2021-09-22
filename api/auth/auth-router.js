@@ -1,7 +1,20 @@
 const router = require("express").Router();
-
+const { getAllItems, insertItem } = require("../users/users-model");
 // const User = require("../users/users-model");
 
-// router.get("/");
+router.get("/items", async (req, res) => {
+  res.json(await getAllItems());
+});
+
+router.post("/newItem", async (req, res, next) => {
+  const { owner_id, location, name, description, price } = req.body;
+  try {
+    const newItem = { owner_id, location, name, description, price };
+    const item = await insertItem(newItem);
+    res.status(201).json(item);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
