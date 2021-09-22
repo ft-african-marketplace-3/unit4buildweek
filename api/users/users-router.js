@@ -42,6 +42,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
     const token = tokenBuilder(req.users);
     res.status(200).json({
       message: `welcome, ${req.users.username}`,
+      username: req.users.username,
       token,
     });
   } else if (!req.body.username || !req.body.password) {
