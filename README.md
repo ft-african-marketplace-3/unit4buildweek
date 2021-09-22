@@ -1,3 +1,21 @@
+ENDPOINTS
+
+/api/users/ - GET - gives a list of all users
+
+/api/users/register - POST - can register a new user by providing a username and password
+
+/api/users/login - POST - can login with a valid username and password
+
+/api/auth/items - GET - Users can see a list of all available items
+
+/api/auth/newItem - POST - Users can create a new item for sale. It requires owner_id, location (is a number, 254, 255, 256 I believe are the options that each correspond with a specific country), name, item_type, and price; description is not required but available
+
+
+
+
+
+
+
 # Build Week Scaffolding for Node and PostgreSQL
 
 ## Video Tutorial
