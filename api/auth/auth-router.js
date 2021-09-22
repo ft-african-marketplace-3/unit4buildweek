@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getAllItems, insertItem } = require("../users/users-model");
+const { getAllItems, insertItem, ownerPage } = require("../users/users-model");
 // const User = require("../users/users-model");
 
 router.get("/items", async (req, res) => {
@@ -15,6 +15,10 @@ router.post("/newItem", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+router.get("/owner", async (req, res) => {
+  res.json(await ownerPage());
 });
 
 module.exports = router;

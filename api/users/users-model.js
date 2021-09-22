@@ -40,6 +40,23 @@ async function insertItem(item) {
   return newItemObject;
 }
 
+async function ownerPage() {
+  const ownerView = await db("owners as o").leftJoin(
+    "users as u",
+    "o.user_id",
+    "u.user_id"
+  );
+
+  const ownerInfo = ownerView.map((e) => {
+    return {
+      owner_id: e.owner_id,
+      user_id: e.user_id,
+    };
+  });
+
+  return ownerInfo;
+}
+
 module.exports = {
   getAllUsers,
   insertUser,
@@ -47,4 +64,5 @@ module.exports = {
   findBy,
   getAllItems,
   insertItem,
+  ownerPage,
 };
