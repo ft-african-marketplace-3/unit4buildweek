@@ -18,7 +18,6 @@ exports.up = async (knex) => {
       items.increments("item_id");
       items
         .integer("owner_id")
-        .notNullable()
         .unsigned()
         .references("owner_id")
         .inTable("owners");
