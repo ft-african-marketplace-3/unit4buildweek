@@ -10,7 +10,6 @@ exports.up = async (knex) => {
       owners.increments("owner_id");
       owners
         .integer("user_id")
-        .notNullable()
         .unsigned()
         .references("user_id")
         .inTable("users");
