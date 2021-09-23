@@ -16,11 +16,6 @@ exports.up = async (knex) => {
     })
     .createTable("items", (items) => {
       items.increments("item_id");
-      items
-        .integer("owner_id")
-        .unsigned()
-        .references("owner_id")
-        .inTable("owners");
       items.integer("location").notNullable().unsigned();
       items.string("name").notNullable();
       items.string("item_type").notNullable();

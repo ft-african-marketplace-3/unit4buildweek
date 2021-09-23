@@ -32,7 +32,6 @@ async function insertUser(user) {
 async function insertItem(item) {
   const [newItemObject] = await db("items").insert(item, [
     "item_id",
-    "owner_id",
     "name",
     "description",
     "price",

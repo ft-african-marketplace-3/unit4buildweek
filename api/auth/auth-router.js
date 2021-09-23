@@ -7,9 +7,9 @@ router.get("/items", async (req, res) => {
 });
 
 router.post("/newItem", async (req, res, next) => {
-  const { owner_id, location, name, item_type, description, price } = req.body;
+  const { location, name, item_type, description, price } = req.body;
   try {
-    const newItem = { owner_id, location, name, item_type, description, price };
+    const newItem = { location, name, item_type, description, price };
     const item = await insertItem(newItem);
     res.status(201).json(item);
   } catch (err) {
